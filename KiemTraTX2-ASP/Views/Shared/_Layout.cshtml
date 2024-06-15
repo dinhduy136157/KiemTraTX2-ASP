@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #FF9900; /* Màu cam đậm */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+        }
+
+        .footer {
+            background-color: red; /* Màu cam nhạt hơn */
+            color: white;
+            text-align: right;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+            .footer a {
+                color: white;
+                text-decoration: none;
+                margin-left: 20px;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        BÀI KIỂM TRA ĐIỀU KIỆN SỐ 2 – D1
+    </div>
+    <!--<div class="sub-header">-->
+    <!-- Các liên kết khác có thể nằm ở đây nếu cần -->
+    <!--</div>-->
+    <div class="footer">
+        <a href="../HocSinh/XemDanhSach">Xem danh sách</a> | <a href="../HocSinh/ThemDuLieu">Thêm dữ liệu</a>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<KiemTraTX2_ASP.Models.HocSinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!String.IsNullOrEmpty(TempData["DeleteMessage"] as string))
+{
+    <div style="color: lawngreen" class="alert alert-info">
+        @TempData["DeleteMessage"]
+    </div>
+}
+
+<div style="margin-left: 20px" class="main">
+    <h2>Danh sách Học Sinh</h2>
+
+    <form method="get" action="@Url.Action("XemDanhSach", "HocSinh")">
+        <input type="text" name="searchString" placeholder="Search by name or ID" value="@ViewBag.CurrentFilter" />
+        <button type="submit">Search</button>
+    </form>
+
+    <table width="50%" border="1" class="table">
+        <tr>
+            <th>Mã học sinh</th>
+            <th>Họ Tên</th>
+            <th>Ảnh dự thi</th>
+            <th>Mã lớp</th>
+            <th>Điểm thi</th>
+            <th>Chức năng</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.sbd)</td>
+                <td>@Html.DisplayFor(modelItem => item.hoten)</td>
+                <td>
+                    <img style="height: 150px" src="@Url.Content("~/Images/" + item.anhduthi)" alt="Alternate Text" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.malop)</td>
+                <td>@Html.DisplayFor(modelItem => item.diemthi)</td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.sbd }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.sbd })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
